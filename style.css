@@ -1,0 +1,7 @@
+.keyboard__key {
+    width: 20px;
+    height: 20px;
+    background-color: powderblue;
+    padding: 5px;
+    margin: 5px;
+}
