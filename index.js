@@ -4,10 +4,14 @@
     <div class="container">
         <div id="textarea"></div>
         <div id="keyboard"></div>
+        <p class="paragraph">Клавиатура создана в операционной системе Windows </p>
+        <p class="paragraph">Для переключения языка комбинация: shift + alt</p>
     </div>`;
-
 })();
 
+let lang = 'ru';
+let swichCase = 'text';
+let activeKeys = [];
 function renderTextArea() {
     const textContainer = document.getElementById("textarea");
     textContainer.innerHTML = `<textarea class="textarea"></textarea>`;
@@ -20,29 +24,47 @@ function initKeyboard() {
     const keyboardPlace = document.getElementById("keyboard");
 
     for (let i = 0; i < keys.keys.length; i++) {
-        if (i == 14 || i == 29 || i == 42 || i == 54) {
-            htmlString += `<div class="new-row"></div>`;
-        }
-        htmlString += `<div class="keyboard__key" id="${keys.keys[i].code}">${keys.keys[i].text.ru}</div>`;
+        htmlString += `<div class="keyboard__key" id="${keys.keys[i].code}">${keys.keys[i][swichCase][lang]}</div>`;
     }
     keyboardPlace.innerHTML = htmlString;
+    activateKeys();
 }
 
 initKeyboard()
 
 /*Language switcher==============================================================*/
-let lang = 'ru';
 
 function swichLanguage() {
     lang = (lang === 'ru') ? 'en' : 'ru';
-    initKeyboard()
+}
+
+function swichCaseHandler() {
+    swichCase = (swichCase === 'text') ? 'shiftText' : 'text';
+}
+
+function activateKeys() {
+    activeKeys.forEach(keyId => document.getElementById(keyId).classList.add('keyboard__key-active'))
 }
 
 /*Keyboard events==============================================================*/
 document.addEventListener('keydown', (event) => {
-    const keyActive = document.getElementById(event.code)
-    keyActive.classList.add('key-active')
-
-
+    activeKeys.push(event.code);
+    if (event.code === 'ShiftLeft') {
+        swichCaseHandler()
+    }
+    initKeyboard();
 })
+
+document.addEventListener('keyup', (event) => {
+    if (activeKeys.filter(code => code === 'ShiftLeft' || code === 'AltLeft').length === 2) {
+        swichLanguage()
+    }
+    if (event.code === 'ShiftLeft') {
+        swichCaseHandler()
+    }
+    activeKeys = activeKeys.filter(code => code !== event.code);
+    initKeyboard();
+})
+
+
 
