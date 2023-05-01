@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background-image: url("./background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 13%;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyboard__key {
+    display: flex;
+    width: 50px;
+    height: 40px;
+    background-color: #fc0fc0;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: inset -5px -5px 5px 0 rgb(0 0 0 / 50%), inset 5px 5px 5px 0 rgb(255 255 255 / 50%);
+    border-radius: 10px;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.keyboard__key:active {
+    background-color: #3e8e41;
+}
+
+.keyboard__key-active {
+    background-color: #3e8e41;
+}
+
+#keyboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+}
+
+#textarea,
+#keyboard {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2B2B2D;
+}
+
+.textarea {
+    width: 100%;
+}
+
+.paragraph {
+    color: bisque;
+}
+
+#Space {
+    width: 470px;
+}
+
+#CapsLock,
+#Backspace,
+#Enter,
+#ShiftLeft,
+#ShiftRight {
+    width: 120px;
+}
