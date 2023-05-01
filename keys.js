@@ -706,3 +706,6 @@ const keys = {
     }
   ]
 }
+
+const keyArr = keys.keys.map(key => new Key(key));
+console.log(keyArr)
