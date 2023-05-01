@@ -640,12 +640,12 @@ const keys = {
     },
     {
       text: {
-        en: "",
-        ru: ""
+        en: " ",
+        ru: " "
       },
       shiftText: {
-        en: "",
-        ru: ""
+        en: " ",
+        ru: " "
       },
       code: "Space"
     },
